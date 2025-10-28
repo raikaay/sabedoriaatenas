@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Pessoal</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #e2cbf6, #fdfaff);
+            font-family: 'VT323', monospace;
+            font-weight: normal;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .profile-container {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+        .profile-title {
+            color: #4b008b;
+            font-size: 40px;
+            margin: 20px 0 15px 0;
+            background-color: #ffc107;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(255, 193, 7, 0.4);
+            display: inline-block;
+            border: 2px solid #4b008b;
+            border-bottom: 4px solid #4b008b;
+            font-family: 'VT323', monospace;
+            font-weight: normal;
+        }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 15px auto 20px auto;
+            border: 3px solid #fff;
+            display: block;
+        }
+        .description-section {
+            margin: 20px 0;
+            max-width: 100%;
+        }
+        .description-section h2 {
+            color: #4b008b;
+            font-size: 24px;
+            margin-bottom: 10px;
+            background-color: #ffc107;
+            padding: 5px 10px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(255, 193, 7, 0.4);
+            display: inline-block;
+            border: 2px solid #4b008b;
+            border-bottom: 4px solid #4b008b;
+            font-family: 'VT323', monospace;
+            font-weight: normal;
+        }
+        .description-section p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-family: 'VT323', monospace;
+            font-weight: normal;
+        }
+        .social-button {
+            background-color: #ffc107;
+            color: #4b008b;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(255, 193, 7, 0.4);
+            border: 2px solid #4b008b;
+            border-bottom: 4px solid #4b008b;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+        @media (max-width: 600px) {
+            .profile-container {
+                padding: 10px;
+            }
+            .profile-title {
+                font-size: 32px;
+                padding: 6px 10px;
+                margin: 10px 0 10px 0;
+            }
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+                margin: 10px auto 15px auto;
+            }
+            .description-section h2 {
+                font-size: 20px;
+                padding: 4px 8px;
+            }
+            .description-section p {
+                font-size: 14px;
+                padding: 10px;
+            }
+            .social-button {
+                font-size: 18px;
+                padding: 8px 16px;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1 class="profile-title">Raika</h1>
+        <img src="raika.jpg" alt="Foto de Perfil" class="profile-picture">
+        <div class="description-section">
+            <h2>Sobre Mim</h2>
+            <p>Lider, responsavel por artes e pela organização do grupo. </p>
+        </div>
+        <div class="description-section">
+            <h2>Contato</h2>
+            <p>
+                <a href="https://github.com/raikaay" class="social-button">GitHub</a>
+                <a href="https://www.linkedin.com/in/raika-oliveira-455233315" class="social-button">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
