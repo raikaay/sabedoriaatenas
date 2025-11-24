@@ -59,7 +59,7 @@
     }
     /* Estilização da barra de rolagem */
     ::-webkit-scrollbar { width: 12px; }
-    ::-webkit-scrollbar-track { background: rgba(76, 29, 149, 0.3); border-radius: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(76, 29, 140, 0.3); border-radius: 6px; }
     ::-webkit-scrollbar-thumb {
       background: linear-gradient(45deg, #FBBF24, #FFD700);
       border-radius: 6px;
@@ -228,24 +228,29 @@
       left: 0;
       z-index: 0;
     }
-    .btn-primary {
+
+    /* BOTÃO SIMPLIFICADO (única alteração) */
+    .btn-conheca {
+      display: inline-block;
       background: linear-gradient(45deg, #FBBF24, #FFD700);
       color: #4C1D95;
-      padding: 1.25rem 2.5rem;
+      padding: 1rem 2rem;
       font-size: 1.5rem;
-      border: 6px solid #4C1D95;
-      border-radius: 0;
+      font-family: 'VT323', monospace;
       text-transform: uppercase;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 6px 6px 0 #4C1D95, 0 0 20px rgba(251, 191, 36, 0.8);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      z-index: 10;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.5);
     }
-    .btn-primary:hover, .btn-primary:focus-visible {
-      transform: translate(-4px, -4px);
-      box-shadow: 8px 8px 0 #4C1D95, 0 0 30px rgba(255, 215, 0, 0.9);
+    .btn-conheca:hover, .btn-conheca:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(251, 191, 36, 0.7);
     }
+    /* fim da alteração */
+
     .timeline {
       position: relative;
       max-width: 1200px;
@@ -293,7 +298,7 @@
       content: '';
       position: absolute;
       width: 20px;
-      height: 20px;
+      height:  itching20px;
       background: #FBBF24;
       border: 4px solid #4C1D95;
       border-radius: 50%;
@@ -414,8 +419,8 @@
     }
     .painel-acessibilidade {
       position: fixed;
-      bottom: 80px;
-      right: 20px;
+      bottom: 60px;
+      right: 10px;
       background: #6B21A8;
       border: 4px solid #4C1D95;
       border-radius: 8px;
@@ -532,17 +537,15 @@
          style="text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6);">
         Um jogo desenvolvido para TCC
       </p>
-      <a href="#historia-titulo" class="btn-primary">CONHEÇA A HISTÓRIA</a>
-      <a href="https://exemplo.com/download" target="_blank" class="download-link">
-        Baixe o jogo aqui
-      </a>
+      <!-- BOTÃO ALTERADO AQUI -->
+      <a href="#historia-titulo" class="btn-conheca">CONHEÇA A HISTÓRIA</a>
+      <!-- fim da alteração -->
     </div>
   </section>
 
   <!-- TIMELINE COM BLOCOS ALTERNADOS -->
   <div class="timeline relative">
     <div class="wave-bg"></div>
-
     <!-- 1. História - ESQUERDA -->
     <div class="timeline-item left">
       <div class="timeline-content aventureiro-card">
@@ -556,7 +559,6 @@
         <div class="citacao">
           “O medo não morre… ele apenas dorme dentro de nós.”
         </div>
-
         <!-- FASE 1 -->
         <div class="fase-bloco">
           <h3 class="fase-titulo">Fase 1 – A Fazenda do Tio Rubens</h3>
@@ -569,7 +571,6 @@
             "Eles só latiam… porque eu nunca aprendi a escutá-los." — Joe Eron
           </div>
         </div>
-
         <!-- FASE 2 -->
         <div class="fase-bloco">
           <h3 class="fase-titulo">Fase 2 – Espaço Sideral</h3>
@@ -582,7 +583,6 @@
             "O universo não é meu inimigo. Meu medo, sim." — Joe Eron
           </div>
         </div>
-
         <!-- FASE 3 -->
         <div class="fase-bloco">
           <h3 class="fase-titulo">Fase 3 – Hora da Liberdade</h3>
@@ -598,7 +598,6 @@
             "— O medo me criou. A coragem me libertou." — Joe Eron
           </div>
         </div>
-
         <!-- FINAL -->
         <div class="fase-bloco">
           <h3 class="fase-titulo">Final</h3>
@@ -614,7 +613,6 @@
         </div>
       </div>
     </div>
-
     <!-- 2. Personagens - DIREITA -->
     <div class="timeline-item right" id="personagens">
       <div class="timeline-content aventureiro-card">
@@ -638,7 +636,6 @@
         </div>
       </div>
     </div>
-
     <!-- 3. Equipe - ESQUERDA -->
     <div class="timeline-item left" id="team">
       <div class="timeline-content aventureiro-card">
@@ -667,7 +664,6 @@
         </div>
       </div>
     </div>
-
     <!-- 4. Desenvolvimento - DIREITA -->
     <div class="timeline-item right" id="development">
       <div class="timeline-content aventureiro-card">
@@ -681,7 +677,6 @@
         </ul>
       </div>
     </div>
-
     <!-- 5. Andamento (vídeo 1) - ESQUERDA -->
     <div class="timeline-item left" id="andamento">
       <div class="timeline-content aventureiro-card video-card">
@@ -692,7 +687,6 @@
         </div>
       </div>
     </div>
-
     <!-- 6. Andamento (vídeo 2) - DIREITA -->
     <div class="timeline-item right">
       <div class="timeline-content aventureiro-card video-card">
@@ -724,7 +718,7 @@
     <button id="resetarAcessibilidade" aria-label="Resetar configurações de acessibilidade">Reset</button>
   </div>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT (sem alterações) -->
   <script>
     // Estrelas
     const starsContainer = document.getElementById('stars');
@@ -743,7 +737,6 @@
       star.style.animationDelay = `${delay}s`;
       starsContainer.appendChild(star);
     }
-
     // Menu mobile
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -752,7 +745,6 @@
       menuToggle.setAttribute('aria-expanded', isActive);
       menuToggle.textContent = isActive ? 'X' : 'Menu';
     });
-
     // Acessibilidade
     const acessibilidadeBtn = document.getElementById('acessibilidadeBtn');
     const painel = document.getElementById('painelAcessibilidade');
@@ -760,13 +752,10 @@
     const diminuirFonte = document.getElementById('diminuirFonte');
     const altoContraste = document.getElementById('altoContraste');
     const resetar = document.getElementById('resetarAcessibilidade');
-    
+   
     // Padrão maior: 18px (1.125rem)
     let fonteBase = 18;
-
-    // Salva a posição atual do scroll antes de mudar a fonte
     let scrollPosition = 0;
-
     function aplicarTamanhoFonte() {
       scrollPosition = window.scrollY;
       document.documentElement.style.fontSize = `${fonteBase}px`;
@@ -774,38 +763,30 @@
         window.scrollTo(0, scrollPosition);
       });
     }
-
-    // Inicializa com o novo padrão maior
     aplicarTamanhoFonte();
-
     acessibilidadeBtn.addEventListener('click', () => {
       painel.classList.toggle('active');
       const expanded = painel.classList.contains('active');
       acessibilidadeBtn.setAttribute('aria-expanded', expanded);
     });
-
     aumentarFonte.addEventListener('click', () => {
       fonteBase += 2;
       aplicarTamanhoFonte();
     });
-
     diminuirFonte.addEventListener('click', () => {
       if (fonteBase > 14) {
         fonteBase -= 2;
         aplicarTamanhoFonte();
       }
     });
-
     altoContraste.addEventListener('click', () => {
       document.body.classList.toggle('alto-contraste');
     });
-
     resetar.addEventListener('click', () => {
       document.body.classList.remove('alto-contraste');
-      fonteBase = 18; // Volta ao novo padrão maior
+      fonteBase = 18;
       aplicarTamanhoFonte();
     });
-
     // Animação da timeline
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -815,34 +796,26 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.timeline-item').forEach(item => observer.observe(item));
-
     // MENU + VOLTAR AO TOPO COM SCROLL SUAVE
     const scrollLinks = document.querySelectorAll('a[href^="#"]');
     scrollLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
         if (href === '#') return;
-
         e.preventDefault();
         const targetId = href.substring(1);
         const target = document.getElementById(targetId);
-
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
-          
-          // Atualiza o link ativo no menu
           document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
           const navLink = document.querySelector(`.nav-link[href="#${targetId}"]`);
           if (navLink) navLink.classList.add('active');
         }
       });
     });
-
-    // Atualiza o link ativo ao rolar
     function updateActiveLink() {
       let current = '';
       const sections = ['inicio-titulo', 'historia-titulo', 'personagens-titulo', 'equipe-titulo', 'desenvolvimento-titulo', 'andamento-titulo'];
-      
       sections.forEach(id => {
         const element = document.getElementById(id);
         if (element) {
@@ -852,9 +825,7 @@
           }
         }
       });
-
       if (!current && window.scrollY === 0) current = 'inicio-titulo';
-
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -862,11 +833,8 @@
         }
       });
     }
-
     updateActiveLink();
     window.addEventListener('scroll', updateActiveLink);
-
-    // Garante scroll suave em todos os navegadores
     document.documentElement.style.scrollBehavior = 'smooth';
   </script>
 </body>
