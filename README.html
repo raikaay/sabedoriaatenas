@@ -12,9 +12,8 @@
       --cor-pedra-clara: #E2E8F0;
       --cor-telhado-escuro: #1A1A1A;
       --cor-verde: #38A169;
-      --fonte-padrao: 20px;
+      --fonte-base: 1.125rem; /* 18px - padrão maior */
     }
-    /* Modo Alto Contraste */
     .alto-contraste {
       background: #000 !important;
       color: #FFD700 !important;
@@ -54,10 +53,21 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      font-size: var(--fonte-padrao);
+      font-size: var(--fonte-base);
       position: relative;
+      overflow-y: auto;
     }
-    /* Fundo do espaço com estrelas e planetas */
+    /* Estilização da barra de rolagem */
+    ::-webkit-scrollbar { width: 12px; }
+    ::-webkit-scrollbar-track { background: rgba(76, 29, 140, 0.3); border-radius: 6px; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(45deg, #FBBF24, #FFD700);
+      border-radius: 6px;
+      border: 2px solid #4C1D95;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(45deg, #FFD700, #FBBF24);
+    }
     .space-bg {
       position: fixed;
       top: 0;
@@ -88,7 +98,6 @@
       0%, 100% { opacity: 0.4; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.3); }
     }
-    /* Planetas do Sistema Solar */
     .planet {
       position: absolute;
       border-radius: 50%;
@@ -102,66 +111,12 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    /* Mercúrio */
-    #mercurio {
-      width: 30px;
-      height: 30px;
-      background: #A9A9A9;
-      top: 20%;
-      left: 15%;
-      animation-duration: 15s;
-      box-shadow: 0 0 15px #A9A9A9;
-    }
-    /* Vênus */
-    #venus {
-      width: 60px;
-      height: 60px;
-      background: #FFA500;
-      top: 40%;
-      left: 25%;
-      animation-duration: 20s;
-      box-shadow: 0 0 25px #FFA500;
-    }
-    /* Terra */
-    #terra {
-      width: 75px;
-      height: 75px;
-      background: linear-gradient(135deg, #1E90FF, #228B22);
-      top: 30%;
-      left: 80%;
-      animation-duration: 24s;
-      box-shadow: 0 0 30px #1E90FF;
-    }
-    /* Marte */
-    #marte {
-      width: 50px;
-      height: 50px;
-      background: #CD5C5C;
-      top: 75%;
-      left: 10%;
-      animation-duration: 30s;
-      box-shadow: 0 0 20px #CD5C5C;
-    }
-    /* Júpiter */
-    #jupiter {
-      width: 120px;
-      height: 120px;
-      background: #DEB887;
-      top: 60%;
-      left: 70%;
-      animation-duration: 60s;
-      box-shadow: 0 0 35px #DEB887;
-    }
-    /* Saturno */
-    #saturno {
-      width: 140px;
-      height: 140px;
-      background: #F4A460;
-      top: 55%;
-      left: 30%;
-      animation-duration: 75s;
-      box-shadow: 0 0 40px #F4A460;
-    }
+    #mercurio { width: 30px; height: 30px; background: #A9A9A9; top: 20%; left: 15%; animation-duration: 15s; box-shadow: 0 0 15px #A9A9A9; }
+    #venus { width: 60px; height: 60px; background: #FFA500; top: 40%; left: 25%; animation-duration: 20s; box-shadow: 0 0 25px #FFA500; }
+    #terra { width: 75px; height: 75px; background: linear-gradient(135deg, #1E90FF, #228B22); top: 30%; left: 80%; animation-duration: 24s; box-shadow: 0 0 30px #1E90FF; }
+    #marte { width: 50px; height: 50px; background: #CD5C5C; top: 75%; left: 10%; animation-duration: 30s; box-shadow: 0 0 20px #CD5C5C; }
+    #jupiter { width: 120px; height: 120px; background: #DEB887; top: 60%; left: 70%; animation-duration: 60s; box-shadow: 0 0 35px #DEB887; }
+    #saturno { width: 140px; height: 140px; background: #F4A460; top: 55%; left: 30%; animation-duration: 75s; box-shadow: 0 0 40px #F4A460; }
     #saturno::after {
       content: '';
       position: absolute;
@@ -175,27 +130,8 @@
       box-shadow: 0 0 20px #DEB887;
       z-index: -1;
     }
-    /* Urano */
-    #urano {
-      width: 90px;
-      height: 90px;
-      background: #4FD0E0;
-      top: 80%;
-      left: 60%;
-      animation-duration: 90s;
-      box-shadow: 0 0 35px #4FD0E0;
-    }
-    /* Netuno */
-    #netuno {
-      width: 85px;
-      height: 85px;
-      background: #4169E1;
-      top: 15%;
-      left: 5%;
-      animation-duration: 100s;
-      box-shadow: 0 0 35px #4169E1;
-    }
-    /* Foco visível */
+    #urano { width: 90px; height: 90px; background: #4FD0E0; top: 80%; left: 60%; animation-duration: 90s; box-shadow: 0 0 35px #4FD0E0; }
+    #netuno { width: 85px; height: 85px; background: #4169E1; top: 15%; left: 5%; animation-duration: 100s; box-shadow: 0 0 35px #4169E1; }
     a:focus-visible,
     button:focus-visible {
       outline: 3px solid #FBBF24 !important;
@@ -221,6 +157,7 @@
       transition: all 0.3s ease;
       text-transform: uppercase;
       font-weight: bold;
+      cursor: pointer;
     }
     .nav-link:hover, .nav-link:focus-visible {
       color: #FBBF24;
@@ -291,24 +228,29 @@
       left: 0;
       z-index: 0;
     }
-    .btn-primary {
+
+    /* BOTÃO SIMPLIFICADO (única alteração) */
+    .btn-conheca {
+      display: inline-block;
       background: linear-gradient(45deg, #FBBF24, #FFD700);
       color: #4C1D95;
-      padding: 1.25rem 2.5rem;
+      padding: 1rem 2rem;
       font-size: 1.5rem;
-      border: 6px solid #4C1D95;
-      border-radius: 0;
+      font-family: 'VT323', monospace;
       text-transform: uppercase;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
-      box-shadow: 6px 6px 0 #4C1D95, 0 0 20px rgba(251, 191, 36, 0.8);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      z-index: 10;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.5);
     }
-    .btn-primary:hover, .btn-primary:focus-visible {
-      transform: translate(-4px, -4px);
-      box-shadow: 8px 8px 0 #4C1D95, 0 0 30px rgba(255, 215, 0, 0.9);
+    .btn-conheca:hover, .btn-conheca:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(251, 191, 36, 0.7);
     }
+    /* fim da alteração */
+
     .timeline {
       position: relative;
       max-width: 1200px;
@@ -324,6 +266,18 @@
       background: url('https://source.unsplash.com/random/1920x100?wave,purple') no-repeat center center/cover;
       z-index: -1;
     }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: linear-gradient(to bottom, #4C1D95, #FBBF24, #4C1D95);
+      transform: translateX(-50%);
+      z-index: 0;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
     .timeline-item {
       opacity: 0;
       transform: translateY(50px);
@@ -331,6 +285,8 @@
       margin-bottom: 3rem;
       width: 50%;
       padding: 0 2rem;
+      position: relative;
+      z-index: 1;
     }
     .timeline-item.visible {
       opacity: 1;
@@ -338,6 +294,24 @@
     }
     .timeline-item.left { margin-right: auto; }
     .timeline-item.right { margin-left: auto; }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height:  itching20px;
+      background: #FBBF24;
+      border: 4px solid #4C1D95;
+      border-radius: 50%;
+      top: 30px;
+      z-index: 2;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.8);
+    }
+    .timeline-item.left::after {
+      right: -12px;
+    }
+    .timeline-item.right::after {
+      left: -12px;
+    }
     .aventureiro-card {
       background: linear-gradient(135deg, #6B21A8, #8B5CF6);
       border: 6px solid #4C1D95;
@@ -345,6 +319,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border-radius: 8px;
       padding: 1.5rem;
+      position: relative;
     }
     .aventureiro-card:hover {
       transform: translate(-4px, -4px);
@@ -352,7 +327,6 @@
     }
     .aventureiro-card h2,
     .aventureiro-card h3,
-    .sub-timeline h3,
     .fase-titulo {
       color: #FBBF24 !important;
       text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
@@ -383,6 +357,8 @@
     }
     @media (max-width: 768px) {
       .timeline-item { width: 100%; margin: 0 auto; padding: 0 1rem; }
+      .timeline::before { left: 30px; }
+      .timeline-item::after { left: 18px !important; }
       .team-grid { grid-template-columns: 1fr; }
     }
     .video-container {
@@ -443,8 +419,8 @@
     }
     .painel-acessibilidade {
       position: fixed;
-      bottom: 80px;
-      right: 20px;
+      bottom: 60px;
+      right: 10px;
       background: #6B21A8;
       border: 4px solid #4C1D95;
       border-radius: 8px;
@@ -475,10 +451,6 @@
       transform: scale(1.05);
       background: #FFD700;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     .download-link {
       display: block;
       margin-top: 1.5rem;
@@ -498,7 +470,6 @@
         0 0 20px rgba(255, 255, 255, 0.7),
         2px 2px 6px rgba(0, 0, 0, 0.7);
     }
-    /* Estilos para citações */
     .citacao {
       font-style: italic;
       color: #FFD700 !important;
@@ -514,13 +485,19 @@
       background: #000 !important;
       border-color: #FFD700 !important;
     }
+    .fase-bloco {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(107, 33, 168, 0.3);
+      border-left: 6px solid #FBBF24;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
   <!-- Fundo do espaço com estrelas e planetas -->
   <div class="space-bg">
     <div class="stars" id="stars"></div>
-    <!-- Planetas -->
     <div id="mercurio" class="planet" title="Mercúrio"></div>
     <div id="venus" class="planet" title="Vênus"></div>
     <div id="terra" class="planet" title="Terra"></div>
@@ -531,26 +508,28 @@
     <div id="netuno" class="planet" title="Netuno"></div>
   </div>
 
+  <!-- MENU -->
   <nav class="nav-menu" aria-label="Menu principal">
     <div class="max-w-4xl mx-auto py-4 px-4 flex justify-between items-center">
       <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none" aria-label="Abrir/fechar menu" aria-expanded="false" aria-controls="nav-links">
-        ☰
+        Menu
       </button>
       <ul id="nav-links" class="flex justify-center items-center space-x-0 md:space-x-8 flex-wrap md:flex-nowrap hidden md:flex">
-        <li><a href="#inicio" class="nav-link active">Início</a></li>
-        <li><a href="#story" class="nav-link">História</a></li>
-        <li><a href="#team" class="nav-link">Equipe</a></li>
-        <li><a href="#development" class="nav-link">Desenvolvimento</a></li>
-        <li><a href="#andamento" class="nav-link">Andamento</a></li>
+        <li><a href="#inicio-titulo" class="nav-link active">Início</a></li>
+        <li><a href="#historia-titulo" class="nav-link">História</a></li>
+        <li><a href="#personagens-titulo" class="nav-link">Personagens</a></li>
+        <li><a href="#equipe-titulo" class="nav-link">Equipe</a></li>
+        <li><a href="#desenvolvimento-titulo" class="nav-link">Desenvolvimento</a></li>
+        <li><a href="#andamento-titulo" class="nav-link">Andamento</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- SEÇÃO INÍCIO -->
+  <!-- INÍCIO -->
   <section id="inicio" class="h-screen flex items-center justify-center text-center px-6 relative">
     <img src="https://source.unsplash.com/random/1920x1080?dream,forest,night" alt="Fundo do jogo The Dream Rebirth">
     <div class="relative z-10">
-      <h2 class="text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-2xl"
+      <h2 id="inicio-titulo" class="text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-2xl"
           style="text-shadow: 0 0 15px rgba(0,0,0,0.9), 0 4px 8px rgba(0,0,0,0.7);">
         The Dream Rebirth
       </h2>
@@ -558,22 +537,21 @@
          style="text-shadow: 0 0 10px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6);">
         Um jogo desenvolvido para TCC
       </p>
-      <a href="#story" class="btn-primary">CONHEÇA A HISTÓRIA</a>
-      <a href="https://exemplo.com/download" target="_blank" class="download-link">
-        Baixe o jogo aqui
-      </a>
+      <!-- BOTÃO ALTERADO AQUI -->
+      <a href="#historia-titulo" class="btn-conheca">CONHEÇA A HISTÓRIA</a>
+      <!-- fim da alteração -->
     </div>
   </section>
 
+  <!-- TIMELINE COM BLOCOS ALTERNADOS -->
   <div class="timeline relative">
     <div class="wave-bg"></div>
-
-    <!-- História -->
-    <div class="timeline-item left" id="story">
+    <!-- 1. História - ESQUERDA -->
+    <div class="timeline-item left">
       <div class="timeline-content aventureiro-card">
-        <h2 class="text-3xl font-bold mb-4">História: The Dream Rebirth</h2>
+        <h2 id="historia-titulo" class="text-3xl font-bold mb-4">História: The Dream Rebirth</h2>
         <p class="text-lg leading-relaxed mb-4">
-          Em 1952, o soldado Joe Eron retorna de uma guerra com cicatrizes que vão além do corpo. Ao caminhar em uma cidade vizinha, ele descobre que uma bruxa sombria chamada Wanda lançou uma maldição sobre a região, mergulhando-a em medo e desespero. Para salvar essa comunidade, Joe precisa encarar não apenas Wanda, mas também os fantasmas do seu próprio passado, um passado repleto de traumas e pesadelos.
+          Em 1952, o soldado Joe Eron retorna de uma guerra com cicatrizes que vão além do corpo. Ao caminhar em uma vila, ele descobre que uma bruxa sombria chamada Wanda lançou uma maldição sobre a região, mergulhando-a em medo e desespero. Para salvar essa comunidade, Joe precisa encarar não apenas Wanda, mas também os fantasmas do seu próprio passado, um passado repleto de pesadelos.
         </p>
         <p class="text-lg leading-relaxed mb-4">
           Preso em um sonho amaldiçoado, Joe reviverá os medos mais profundos de sua infância. Somente enfrentando cada um deles, ele poderá acordar e finalmente derrotar Wanda no mundo real.
@@ -581,95 +559,103 @@
         <div class="citacao">
           “O medo não morre… ele apenas dorme dentro de nós.”
         </div>
-        <p class="text-lg leading-relaxed mb-4">
-          Na noite de 7 de setembro de 1952, Joe Eron avança pela floresta escura. O vento sussurra nomes, e o ar parece pesado. Em sua busca por Wanda, a bruxa que amaldiçoou a vila, ele sente algo estranho — como se estivesse sendo observado.
-        </p>
-        <p class="text-lg leading-relaxed mb-4">
-          Entre os troncos retorcidos, uma voz feminina ecoa:<br>
-          <em>“Você teve coragem de vir até aqui, Joe Eron… Agora enfrente o que realmente teme.”</em>
-        </p>
-        <p class="text-lg leading-relaxed mb-4">
-          Com um gesto, Wanda lança uma luz verde intensa. Joe sente o chão desaparecer sob seus pés e então, o silêncio.<br>
-          Ele acorda em um lugar familiar e distorcido. Uma fazenda… mas não qualquer fazenda. Era a <strong>Fazenda do Tio Rubens</strong>, um de seus piores medos de criança.
-        </p>
-        <p class="text-lg leading-relaxed mb-4">
-          Assim começa sua jornada de superação.
-        </p>
-        <h3 class="fase-titulo">Fase 1 – A Fazenda do Tio Rubens</h3>
-        <p class="text-lg leading-relaxed mb-4">
-          O primeiro medo de Joe: o pavor dos cães raivosos de seu tio, que guardavam a fazenda.<br>
-          Com apenas uma espada velha, Joe precisa desviar, lutar e enfrentar o trauma de sua infância.<br>
-          Ao derrotar os cães e o espírito sombrio de Rubens, Joe conquista sua primeira lembrança purificada, e a espada ganha um brilho azul, símbolo de sua coragem recuperada.
-        </p>
-        <div class="citacao">
-          "Eles só latiam… porque eu nunca aprendi a escutá-los." — Joe Eron
+        <!-- FASE 1 -->
+        <div class="fase-bloco">
+          <h3 class="fase-titulo">Fase 1 – A Fazenda do Tio Rubens</h3>
+          <p class="text-lg leading-relaxed mb-4">
+            O primeiro medo de Joe: o pavor dos bois raivosos de seu tio, que guardavam a fazenda.<br>
+            Com apenas um taco com arame enfarpado, Joe precisa desviar, lutar e enfrentar o trauma de sua infância.<br>
+            Ao derrotar o tio e os bois, Joe conquista sua primeira lembrança purificada, e a espada ganha um enforcado potente, símbolo de sua coragem recuperada.
+          </p>
         </div>
-        <h3 class="fase-titulo">Fase 2 – Espaço Sideral</h3>
-        <p class="text-lg leading-relaxed mb-4">
-          Joe é lançado para o espaço, um cenário surreal. Ele enfrenta um extraterrestre, símbolos do medo do desconhecido e do isolamento.<br>
-          Em gravidade zero, ele luta contra o pânico e aprende a confiar em si mesmo.<br>
-          Ao vencer, descobre uma chave dourada flutuando — a <strong>“Chave dos Sonhos”</strong>, que abrirá o portal para sua casa.
-        </p>
-        <div class="citacao">
-          "O universo não é meu inimigo. Meu medo, sim." — Joe Eron
+        <!-- FASE 2 -->
+        <div class="fase-bloco">
+          <h3 class="fase-titulo">Fase 2 – Espaço Sideral</h3>
+          <p class="text-lg leading-relaxed mb-4">
+            Joe é lançado para o espaço, um cenário surreal. Ele enfrenta um extraterrestre, símbolos do medo do desconhecido e do isolamento.<br>
+            Ele luta contra o pânico e aprende a confiar em si mesmo.<br>
+          <div class="citacao">
+            "O universo não é meu inimigo. Meu medo, sim." — Joe Eron
+          </div>
         </div>
-        <h3 class="fase-titulo">Fase 3 – Hora da Liberdade</h3>
-        <p class="text-lg leading-relaxed mb-4">
-          Joe desperta novamente na floresta, o ponto onde tudo começou.<br>
-          Wanda o espera — agora em sua forma verdadeira, um ser colossal feito de sombras, raízes e olhos flamejantes.<br>
-          Durante a batalha final, Joe usa tudo o que conquistou — espada, lanterna e chave — para derrotar a Bruxa e romper o ciclo do medo.
-        </p>
-        <p class="text-lg leading-relaxed mb-4">
-          Com o golpe final, o mundo dos pesadelos desaba, e Joe acorda, respirando fundo sob o nascer do sol.
-        </p>
-        <div class="citacao">
-          "— O medo me criou. A coragem me libertou." — Joe Eron
+        <!-- FASE 3 -->
+        <div class="fase-bloco">
+          <h3 class="fase-titulo">Fase 3 – Hora da Liberdade</h3>
+          <p class="text-lg leading-relaxed mb-4">
+            Joe aparece na floresta, o ponto onde Wanda estava.<br>
+            Wanda o espera com seus feitiços pelo ar.<br>
+          </p>
+          <p class="text-lg leading-relaxed mb-4">
+            Com o golpe final, o mundo dos pesadelos desaba, e Joe acorda, respirando fundo sob o nascer do sol.
+            E assim se encerra a aventura de Joe pela sua superação.
+          </p>
+          <div class="citacao">
+            "— O medo me criou. A coragem me libertou." — Joe Eron
+            
+          </div>
         </div>
-        <p class="text-lg leading-relaxed mb-4">
-          Joe caminha pela aldeia. O ar está limpo. As pessoas voltam a sorrir.<br>
-          No horizonte, o vento sopra leve, mas uma voz sussurra distante:<br>
-          <em>“O medo nunca morre… ele apenas muda de forma.”</em>
-        </p>
-        <p class="text-lg leading-relaxed font-bold text-center mt-6">
-          A tela escurece.<br>
-          Fim — ou talvez, um novo começo.
-        </p>
       </div>
     </div>
-
-    <!-- Equipe -->
-    <div class="timeline-item right" id="team">
+    <!-- 2. Personagens - DIREITA -->
+    <div class="timeline-item right" id="personagens">
       <div class="timeline-content aventureiro-card">
-        <h2 class="text-3xl font-bold mb-4">Equipe</h2>
+        <h2 id="personagens-titulo" class="text-3xl font-bold mb-6">Personagens</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <img src="https://via.placeholder.com/300x400/6B21A8/FFF7ED?text=Joe+Eron" alt="Joe Eron" class="w-full h-auto rounded-lg border-4 border-[#4C1D95] shadow-lg mb-3">
+            <h3 class="text-xl font-bold text-[#FBBF24]">Joe Eron</h3>
+            <p class="text-[#FEF3C7]">Soldado, protagonista.</p>
+          </div>
+          <div class="text-center">
+            <img src="https://via.placeholder.com/300x400/8B5CF6/FFF7ED?text=Wanda" alt="Wanda" class="w-full h-auto rounded-lg border-4 border-[#4C1D95] shadow-lg mb-3">
+            <h3 class="text-xl font-bold text-[#FBBF24]">wanda</h3>
+            <p class="text-[#FEF3C7]">Bruxa sombria, a vilã.</p>
+          </div>
+          <div class="text-center">
+            <img src="https://via.placeholder.com/300x400/4C1D95/FFF7ED?text=Tio+Rubens" alt="Tio Rubens" class="w-full h-auto rounded-lg border-4 border-[#4C1D95] shadow-lg mb-3">
+            <h3 class="text-xl font-bold text-[#FBBF24]">alien</h3>
+            <p class="text-[#FEF3C7]">Pesadelo do passado de Joe.</p>
+          </div>
+           <div class="text-center">
+            <img src="https://via.placeholder.com/300x400/4C1D95/FFF7ED?text=Tio+Rubens" alt="Tio Rubens" class="w-full h-auto rounded-lg border-4 border-[#4C1D95] shadow-lg mb-3">
+            <h3 class="text-xl font-bold text-[#FBBF24]">tio</h3>
+            <p class="text-[#FEF3C7]">Pesadelo do passado de Joe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 3. Equipe - ESQUERDA -->
+    <div class="timeline-item left" id="team">
+      <div class="timeline-content aventureiro-card">
+        <h2 id="equipe-titulo" class="text-3xl font-bold mb-4">Equipe</h2>
         <div class="team-grid">
-          <div class="aventureiro-card">
-            <h3><a href="https://github.com/raikaoliveira" target="_blank" class="hover:underline">Raika Oliveira</a></h3>
+          <a href="https://raikaay.github.io/raika/" target="_blank" class="aventureiro-card block hover:no-underline focus-visible:outline-none">
+            <h3 class="text-xl font-bold text-[#FBBF24] hover:underline">Raika Oliveira</h3>
             <p>Líder da Equipe</p>
-          </div>
-          <div class="aventureiro-card">
-            <h3><a href="https://github.com/guilhermesilva" target="_blank" class="hover:underline">Guilherme Silva</a></h3>
+          </a>
+          <a href="https://raikaay.github.io/guilherme/" target="_blank" class="aventureiro-card block hover:no-underline focus-visible:outline-none">
+            <h3 class="text-xl font-bold text-[#FBBF24] hover:underline">Guilherme Silva</h3>
             <p>Programador</p>
-          </div>
-          <div class="aventureiro-card">
-            <h3><a href="https://github.com/fernandasilva" target="_blank" class="hover:underline">Fernanda Silva</a></h3>
+          </a>
+          <a href="https://github.com/fernandasilva" target="_blank" class="aventureiro-card block hover:no-underline focus-visible:outline-none">
+            <h3 class="text-xl font-bold text-[#FBBF24] hover:underline">Fernanda Silva</h3>
             <p>Design</p>
-          </div>
-          <div class="aventureiro-card">
-            <h3><a href="https://github.com/arthursilva" target="_blank" class="hover:underline">Arthur Silva</a></h3>
-            <p>Documentação</p>
-          </div>
-          <div class="aventureiro-card">
-            <h3><a href="https://github.com/matheusalves" target="_blank" class="hover:underline">Matheus Alves</a></h3>
-            <p>Design</p>
-          </div>
+          </a>
+         <a href="https://raikaay.github.io/arthur/" target="_blank" class="aventureiro-card block hover:no-underline focus-visible:outline-none">
+            <h3 class="text-xl font-bold text-[#FBBF24] hover:underline">Arthur Silva</h3>
+            <p>Programador</p>
+          </a>
+          <a href="https://raikaay.github.io/matheus/" target="_blank" class="aventureiro-card block hover:no-underline focus-visible:outline-none">
+            <h3 class="text-xl font-bold text-[#FBBF24] hover:underline">Matheus Alves</h3>
+            <p>Programador</p>
+          </a>
         </div>
       </div>
     </div>
-
-    <!-- Desenvolvimento -->
-    <div class="timeline-item left" id="development">
+    <!-- 4. Desenvolvimento - DIREITA -->
+    <div class="timeline-item right" id="development">
       <div class="timeline-content aventureiro-card">
-        <h2 class="text-3xl font-bold mb-4">Desenvolvimento</h2>
+        <h2 id="desenvolvimento-titulo" class="text-3xl font-bold mb-4">Desenvolvimento</h2>
         <ul class="sub-timeline space-y-4">
           <li><h3>Planejamento Inicial</h3><p>Brainstorm, escopo e conceito do jogo.</p></li>
           <li><h3>Início da Documentação</h3><p>Documentos de design e storyboards.</p></li>
@@ -679,17 +665,17 @@
         </ul>
       </div>
     </div>
-
-    <!-- Vídeos -->
-    <div class="timeline-item right" id="andamento">
+    <!-- 5. Andamento (vídeo 1) - ESQUERDA -->
+    <div class="timeline-item left" id="andamento">
       <div class="timeline-content aventureiro-card video-card">
-        <h2 class="text-3xl font-bold mb-4">Começo do Jogo</h2>
+        <h2 id="andamento-titulo" class="text-3xl font-bold mb-4">Começo do Jogo</h2>
         <p class="text-lg mb-4">Assista ao progresso inicial do jogo.</p>
         <div class="video-container">
           <iframe src="https://www.youtube.com/embed/eZpFfoFeby0" title="Vídeo de progresso inicial" allowfullscreen></iframe>
         </div>
       </div>
     </div>
+    <!-- 6. Andamento (vídeo 2) - DIREITA -->
     <div class="timeline-item right">
       <div class="timeline-content aventureiro-card video-card">
         <h2 class="text-3xl font-bold mb-4">Processo Final</h2>
@@ -701,16 +687,17 @@
     </div>
   </div>
 
+  <!-- RODAPÉ -->
   <footer>
     <p>© 2025 The Dream Rebirth. Todos os direitos reservados.</p>
-    <a href="#inicio" class="back-to-top" aria-label="Voltar ao topo">
+    <a href="#inicio-titulo" id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
       Voltar ao Topo
     </a>
   </footer>
 
-  <!-- BOTÃO E PAINEL DE ACESSIBILIDADE -->
+  <!-- ACESSIBILIDADE -->
   <button id="acessibilidadeBtn" class="acessibilidade-btn" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="painelAcessibilidade">
-    ♿️
+   ♿
   </button>
   <div id="painelAcessibilidade" class="painel-acessibilidade" role="region" aria-labelledby="acessibilidadeBtn">
     <button id="aumentarFonte" aria-label="Aumentar tamanho da fonte">+ Fonte</button>
@@ -719,8 +706,9 @@
     <button id="resetarAcessibilidade" aria-label="Resetar configurações de acessibilidade">Reset</button>
   </div>
 
+  <!-- SCRIPT (sem alterações) -->
   <script>
-    // Gerar estrelas
+    // Estrelas
     const starsContainer = document.getElementById('stars');
     const starCount = 200;
     for (let i = 0; i < starCount; i++) {
@@ -737,16 +725,14 @@
       star.style.animationDelay = `${delay}s`;
       starsContainer.appendChild(star);
     }
-
     // Menu mobile
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     menuToggle.addEventListener('click', () => {
       const isActive = navLinks.classList.toggle('active');
       menuToggle.setAttribute('aria-expanded', isActive);
-      menuToggle.textContent = isActive ? 'X' : '☰';
+      menuToggle.textContent = isActive ? 'X' : 'Menu';
     });
-
     // Acessibilidade
     const acessibilidadeBtn = document.getElementById('acessibilidadeBtn');
     const painel = document.getElementById('painelAcessibilidade');
@@ -754,37 +740,41 @@
     const diminuirFonte = document.getElementById('diminuirFonte');
     const altoContraste = document.getElementById('altoContraste');
     const resetar = document.getElementById('resetarAcessibilidade');
-
-    let fonteSize = 20;
-
+   
+    // Padrão maior: 18px (1.125rem)
+    let fonteBase = 18;
+    let scrollPosition = 0;
+    function aplicarTamanhoFonte() {
+      scrollPosition = window.scrollY;
+      document.documentElement.style.fontSize = `${fonteBase}px`;
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollPosition);
+      });
+    }
+    aplicarTamanhoFonte();
     acessibilidadeBtn.addEventListener('click', () => {
       painel.classList.toggle('active');
       const expanded = painel.classList.contains('active');
       acessibilidadeBtn.setAttribute('aria-expanded', expanded);
     });
-
     aumentarFonte.addEventListener('click', () => {
-      fonteSize += 2;
-      document.documentElement.style.setProperty('--fonte-padrao', `${fonteSize}px`);
+      fonteBase += 2;
+      aplicarTamanhoFonte();
     });
-
     diminuirFonte.addEventListener('click', () => {
-      if (fonteSize > 14) {
-        fonteSize -= 2;
-        document.documentElement.style.setProperty('--fonte-padrao', `${fonteSize}px`);
+      if (fonteBase > 14) {
+        fonteBase -= 2;
+        aplicarTamanhoFonte();
       }
     });
-
     altoContraste.addEventListener('click', () => {
       document.body.classList.toggle('alto-contraste');
     });
-
     resetar.addEventListener('click', () => {
       document.body.classList.remove('alto-contraste');
-      fonteSize = 20;
-      document.documentElement.style.setProperty('--fonte-padrao', `${fonteSize}px`);
+      fonteBase = 18;
+      aplicarTamanhoFonte();
     });
-
     // Animação da timeline
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -793,29 +783,47 @@
         }
       });
     }, { threshold: 0.1 });
-
-    document.querySelectorAll('.timeline-item').forEach(item => {
-      observer.observe(item);
-    });
-
-    // Link ativo no menu
-    const links = document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      const sections = ['inicio', 'story', 'team', 'development', 'andamento'];
-      sections.forEach(section => {
-        const element = document.getElementById(section);
-        if (element && window.scrollY >= element.offsetTop - 100) {
-          current = section;
+    document.querySelectorAll('.timeline-item').forEach(item => observer.observe(item));
+    // MENU + VOLTAR AO TOPO COM SCROLL SUAVE
+    const scrollLinks = document.querySelectorAll('a[href^="#"]');
+    scrollLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          const navLink = document.querySelector(`.nav-link[href="#${targetId}"]`);
+          if (navLink) navLink.classList.add('active');
         }
       });
-      links.forEach(link => {
+    });
+    function updateActiveLink() {
+      let current = '';
+      const sections = ['inicio-titulo', 'historia-titulo', 'personagens-titulo', 'equipe-titulo', 'desenvolvimento-titulo', 'andamento-titulo'];
+      sections.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top >= 0 && rect.top < 150) {
+            current = id;
+          }
+        }
+      });
+      if (!current && window.scrollY === 0) current = 'inicio-titulo';
+      document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
           link.classList.add('active');
         }
       });
-    });
+    }
+    updateActiveLink();
+    window.addEventListener('scroll', updateActiveLink);
+    document.documentElement.style.scrollBehavior = 'smooth';
   </script>
 </body>
 </html>
